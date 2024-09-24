@@ -23,6 +23,7 @@ def accept_payload(func):
 def authenticate_principal(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
+        #import pdb;pdb.set_trace()
         p_str = request.headers.get('X-Principal')
         assertions.assert_auth(p_str is not None, 'principal not found')
         p_dict = json.loads(p_str)
